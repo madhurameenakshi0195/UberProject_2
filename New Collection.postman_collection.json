@@ -1,0 +1,40 @@
+{
+  "info": {
+    "_postman_id": "abbaff59-9fa8-465c-9611-c85527b823f3",
+    "name": "New Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55498153",
+    "_collection_link": "https://go.postman.co/collection/55498153-abbaff59-9fa8-465c-9611-c85527b823f3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8080/auth/register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Madhura\",\n    \"email\": \"madhura@gmail.com\",\n    \"password\": \"123456\",\n    \"role\": \"RIDER\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
