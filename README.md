@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-# Uber_2-
-=======
-worked but i coudn't complete let me try again , its is in progress .......
->>>>>>> 8998e4e125bfd1eceb7e32dbc89eeeddb9a68eb2
+on my way to built an Uber-style ride-hailing backend using Java, Spring Boot, PostgreSQL, JWT, WebSockets, FastAPI, Scikit-Learn, and Ollama. Implemented AI-powered fare prediction, intelligent driver matching, and chatbot support with real-time ride tracking
