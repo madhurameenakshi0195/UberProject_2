@@ -3,6 +3,7 @@ package com.uberclone.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+
 @Entity
 @Getter
 @Setter
@@ -15,11 +16,23 @@ public class Ride {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String pickupLocation;
+    private Double pickupLat;
+    private Double pickupLng;
 
-    private String dropLocation;
+    private Double dropLat;
+    private Double dropLng;
 
     private Double fare;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private RideStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "rider_id")
+    private User rider;
+
+    @ManyToOne
+    @JoinColumn(name = "driver_id")
+    private Driver driver;
 }
+

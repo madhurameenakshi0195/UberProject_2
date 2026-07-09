@@ -3,6 +3,12 @@ package com.uberclone.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 @Entity
 @Getter
 @Setter
@@ -21,9 +27,15 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     private String phoneNumber;
 
     private String role; // RIDER or DRIVER
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "rider")
+    private List<Ride> rides;
 }

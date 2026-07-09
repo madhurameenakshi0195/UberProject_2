@@ -1,7 +1,10 @@
 package com.uberclone.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,9 +24,15 @@ public class Driver {
 
     private String vehicleModel;
 
-    private Double currentLatitude;
+    private Double currentLat;
 
-    private Double currentLongitude;
+    private Double currentLng;
 
     private Boolean available;
+
+
+    @OneToMany(mappedBy = "driver")
+
+
+    private List<Ride> rides;
 }
