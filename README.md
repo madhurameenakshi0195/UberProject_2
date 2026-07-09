@@ -1,1 +1,1 @@
-on my way to built an Uber-style ride-hailing backend using Java, Spring Boot, PostgreSQL, JWT, WebSockets, FastAPI, Scikit-Learn, and Ollama. Implemented AI-powered fare prediction, intelligent driver matching, and chatbot support with real-time ride tracking
+On my way to built an Uber-style ride-hailing backend using Java, Spring Boot, PostgreSQL, JWT, WebSockets, FastAPI, Scikit-Learn, and Ollama. Implemented AI-powered fare prediction, intelligent driver matching, and chatbot support with real-time ride tracking
