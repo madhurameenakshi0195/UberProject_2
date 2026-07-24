@@ -18,21 +18,32 @@ public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
+    private String email;
+
+    private String password;
+
     private String name;
 
     private String vehicleNumber;
 
     private String vehicleModel;
 
-    private Double currentLat;
-
-    private Double currentLng;
-
     private Boolean available;
+
+    @OneToOne(mappedBy = "driver",
+            cascade = CascadeType.ALL)
+    private DriverLocation driverLocation;
 
 
     @OneToMany(mappedBy = "driver")
 
 
     private List<Ride> rides;
+
+    private Double rating;
+
+    private Integer completedRides;
+
+    private Double acceptanceRate;
 }

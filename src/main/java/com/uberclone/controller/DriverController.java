@@ -2,6 +2,7 @@ package com.uberclone.controller;
 
 //import com.uberclone.dto.DriverLocationDTO;
 import com.uberclone.dto.DriverLocationDTO;
+import com.uberclone.dto.DriverLoginDTO;
 import com.uberclone.dto.DriverRegisterDTO;
 import com.uberclone.entity.Driver;
 import com.uberclone.repository.DriverRepository;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/drivers")
@@ -29,6 +31,14 @@ public class DriverController {
         return driverService.registerDriver(dto);
 
 
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody DriverLoginDTO dto) {
+
+        String token = driverService.login(dto);
+
+        return ResponseEntity.ok(Map.of("token", token));
     }
 
     @GetMapping

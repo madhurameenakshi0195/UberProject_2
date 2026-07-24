@@ -10,34 +10,32 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public abstract class DriverMatchingService {
+public class DriverMatchingService {
 
     private final DriverRepository driverRepository;
 
     public Driver findNearestDriver(
-            double pickupLat,
-            double pickupLng) {
+            Double pickupLat,
+            Double pickupLng
+    ) {
 
-        List<Driver> drivers =
-                driverRepository.findByAvailableTrue();
+        List<Driver> drivers = driverRepository.findByAvailableTrue();
 
         Driver nearestDriver = null;
         double minDistance = Double.MAX_VALUE;
 
         for (Driver driver : drivers) {
 
-            if (driver.getCurrentLat() == null ||
-            driver.getCurrentLng() == null){
+            if (driver.getDriverLocation() == null) {
                 continue;
             }
 
-            double distance =
-                    DistanceUtil.calculateDistance(
-                            pickupLat,
-                            pickupLng,
-                            driver.getCurrentLat(),
-                            driver.getCurrentLng()
-                    );
+            double distance = DistanceUtil.calculateDistance(
+                    pickupLat,
+                    pickupLng,
+                    driver.getDriverLocation().getLatitude(),
+                    driver.getDriverLocation().getLongitude()
+            );
 
             if (distance < minDistance) {
                 minDistance = distance;
@@ -47,9 +45,4 @@ public abstract class DriverMatchingService {
 
         return nearestDriver;
     }
-
-    public abstract Driver findNearestDriver(
-            Double pickupLat,
-            Double pickupLng
-    );
 }

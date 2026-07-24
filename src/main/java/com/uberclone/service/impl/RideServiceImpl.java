@@ -9,7 +9,10 @@ import com.uberclone.repository.DriverRepository;
 import com.uberclone.repository.RideRepository;
 import com.uberclone.repository.UserRepository;
 import com.uberclone.service.DriverMatchingService;
+import com.uberclone.service.FarePredictionService;
+import com.uberclone.service.FareService;
 import com.uberclone.service.RideService;
+import com.uberclone.util.DistanceUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +25,28 @@ public class RideServiceImpl implements RideService {
     private final UserRepository userRepository;
     private final DriverMatchingService driverMatchingService;
     private final DriverRepository driverRepository;
+    private final FarePredictionService farePredictionService;
 
     @Override
     public Ride requestRide(RideRequestDTO dto, String email) {
+
+
+        double distance = DistanceUtil.calculateDistance(
+                dto.getPickupLat(),
+                dto.getPickupLng(),
+                dto.getDropLat(),
+                dto.getDropLng()
+        );
+
+
+
+
+        // Simple estimate: average speed ≈ 30 km/h
+        double averageSpeed = 30.0; // km/h
+
+        double duration = (distance / averageSpeed) * 60;
+
+        double fare = farePredictionService.predictFare(distance, duration);
 
         User rider = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -41,6 +63,7 @@ public class RideServiceImpl implements RideService {
                 .pickupLng(dto.getPickupLng())
                 .dropLat(dto.getDropLat())
                 .dropLng(dto.getDropLng())
+                .fare(Math.round(fare * 100.0) / 100.0)
                 .rider(rider)
                 .driver(driver)
                 .status(
