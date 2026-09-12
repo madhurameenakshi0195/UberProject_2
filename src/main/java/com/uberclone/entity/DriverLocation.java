@@ -1,5 +1,6 @@
 package com.uberclone.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,5 +22,6 @@ public class DriverLocation {
 
     @OneToOne
     @JoinColumn(name = "driver_id", unique = true)
+    @JsonBackReference
     private Driver driver;
 }

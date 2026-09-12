@@ -42,15 +42,33 @@ public class JwtAuthenticationFilter
             return;
         }
 
+//        String token = authHeader.substring(7);
+//
+//        if (!jwtUtil.validateToken(token)) {
+//
+//            filterChain.doFilter(request, response);
+//            return;
+//        }
+
         String token = authHeader.substring(7);
 
+        System.out.println("JWT TOKEN RECEIVED");
+
         if (!jwtUtil.validateToken(token)) {
+
+            System.out.println("JWT TOKEN INVALID");
 
             filterChain.doFilter(request, response);
             return;
         }
 
+        System.out.println("JWT TOKEN VALID");
+
         String email = jwtUtil.extractEmail(token);
+
+        System.out.println("JWT EMAIL: " + email);
+//
+//        String email = jwtUtil.extractEmail(token);
 
         UserDetails userDetails =
                 userDetailsService

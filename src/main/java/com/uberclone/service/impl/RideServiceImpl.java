@@ -16,6 +16,8 @@ import com.uberclone.util.DistanceUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 
@@ -141,4 +143,43 @@ public class RideServiceImpl implements RideService {
 
         return rideRepository.save(ride);
     }
+
+    @Override
+    public Ride getRide(Long rideId) {
+
+        return rideRepository.findById(rideId)
+                .orElseThrow(() ->
+                        new RuntimeException("Ride not found"));
+    }
+
+    @Override
+    public Ride getCurrentRide(Long driverId) {
+
+        Driver driver = driverRepository.findById(driverId)
+                .orElseThrow(() ->
+                        new RuntimeException("Driver not found"));
+
+        List<RideStatus> activeStatuses = List.of(
+                RideStatus.DRIVER_ASSIGNED,
+                RideStatus.ACCEPTED,
+                RideStatus.STARTED
+        );
+
+        for (RideStatus status : activeStatuses) {
+
+            List<Ride> rides =
+                    rideRepository.findByDriverAndStatus(
+                            driver,
+                            status
+                    );
+
+            if (!rides.isEmpty()) {
+                return rides.get(0);
+            }
+        }
+
+        return null;
+    }
+
+
 }

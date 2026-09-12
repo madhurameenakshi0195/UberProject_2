@@ -47,4 +47,17 @@ public class RideController {
 
         return rideService.completeRide(rideId);
     }
+    @GetMapping("/driver/{driverId}/current")
+    public Ride getCurrentRide(
+            @PathVariable Long driverId) {
+
+        return rideService.getCurrentRide(driverId);
+    }
+
+    @GetMapping("/{rideId}")
+    public Ride getRide(
+            @PathVariable Long rideId) {
+
+        return rideService.getRide(rideId);
+    }
 }

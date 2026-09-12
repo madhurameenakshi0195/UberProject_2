@@ -33,17 +33,46 @@ public class DriverController {
 
     }
 
+    @PutMapping("/availability/{driverId}")
+    public ResponseEntity<String> updateAvailability(
+
+            @PathVariable Long driverId,
+
+            @RequestParam Boolean available
+    ) {
+
+        driverService.updateAvailability(driverId, available);
+
+        return ResponseEntity.ok("Driver availability updated");
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody DriverLoginDTO dto) {
 
-        String token = driverService.login(dto);
+        Driver driver = driverService.login(dto);
 
-        return ResponseEntity.ok(Map.of("token", token));
+        String token = driverService.generateToken(driver.getEmail());
+
+        return ResponseEntity.ok(
+                Map.of(
+                        "token", token,
+                        "driverId", driver.getId(),
+                        "name", driver.getName(),
+                        "email", driver.getEmail(),
+                        "vehicleNumber", driver.getVehicleNumber(),
+                        "vehicleModel", driver.getVehicleModel(),
+                        "available", driver.getAvailable()
+                )
+        );
     }
-
     @GetMapping
     public List<Driver> getAllDrivers() {
         return driverRepository.findAll();
+    }
+
+    @GetMapping("/available")
+    public List<Driver> getAvailableDrivers() {
+        return driverRepository.findByAvailableTrue();
     }
 
     @PutMapping("/location/{driverId}")

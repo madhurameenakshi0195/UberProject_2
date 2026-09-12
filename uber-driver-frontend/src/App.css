@@ -1,0 +1,1406 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+/* =========================
+   Driver Dashboard
+   ========================= */
+
+.dashboard {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.dashboard h1 {
+  margin-bottom: 10px;
+  font-size: 32px;
+  color: #111;
+}
+
+.dashboard h2 {
+  margin-bottom: 30px;
+  font-size: 22px;
+  color: #555;
+}
+
+
+/* Driver information */
+
+.driver-info {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.driver-info p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+
+/* Status card */
+
+.status {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.status h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.status p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* Buttons */
+
+.dashboard button {
+  padding: 13px 22px;
+  border: none;
+  border-radius: 8px;
+  margin-right: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #000;
+  color: white;
+}
+
+.dashboard button:hover {
+  background: #333;
+}
+
+.dashboard button:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+/* =========================
+   DRIVER REGISTER
+========================= */
+
+.driver-register-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+  box-sizing: border-box;
+
+  font-family: Arial, sans-serif;
+}
+
+.driver-register-card {
+  width: 100%;
+  max-width: 480px;
+
+  background: white;
+
+  padding: 40px;
+
+  border-radius: 16px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+.register-logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+
+  color: #000;
+
+  margin-bottom: 30px;
+}
+
+.driver-register-card h1 {
+  font-size: 30px;
+  margin: 0 0 8px;
+
+  color: #111;
+}
+
+.register-subtitle {
+  color: #666;
+  font-size: 15px;
+
+  margin: 0 0 30px;
+}
+
+
+/* INPUTS */
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #333;
+
+  margin-bottom: 7px;
+}
+
+.input-group input {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  border: 1px solid #d5d5d5;
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  box-sizing: border-box;
+
+  outline: none;
+
+  transition: border 0.2s;
+}
+
+.input-group input:focus {
+  border: 1px solid #000;
+}
+
+
+/* REGISTER BUTTON */
+
+.register-button {
+  width: 100%;
+
+  padding: 15px;
+
+  margin-top: 8px;
+
+  background: #000;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s;
+}
+
+.register-button:hover {
+  background: #333;
+}
+
+
+/* MESSAGE */
+
+.register-message {
+  text-align: center;
+
+  margin-top: 18px;
+
+  font-size: 14px;
+  color: #333;
+}
+
+
+/* DIVIDER */
+
+.register-divider {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 28px 0;
+
+  color: #999;
+
+  font-size: 12px;
+}
+
+.register-divider::before,
+.register-divider::after {
+  content: "";
+
+  flex: 1;
+
+  height: 1px;
+
+  background: #ddd;
+}
+
+
+/* LOGIN LINK */
+
+.login-text {
+  text-align: center;
+
+  color: #666;
+
+  font-size: 14px;
+
+  margin: 0;
+}
+
+.login-link {
+  color: #000;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================
+   DRIVER DASHBOARD
+========================= */
+
+.driver-dashboard {
+  min-height: 100vh;
+
+  background: #f5f5f5;
+
+  font-family: Arial, sans-serif;
+
+  color: #111;
+}
+
+
+/* HEADER */
+
+.dashboard-header {
+  height: 70px;
+
+  background: #000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 40px;
+
+  box-sizing: border-box;
+}
+
+.dashboard-logo {
+  color: white;
+
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.logout-button {
+  background: transparent;
+
+  border: 1px solid #555;
+
+  color: white;
+
+  padding: 9px 18px;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #222;
+}
+
+
+/* MAIN CONTENT */
+
+.dashboard-content {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 50px 25px;
+}
+
+
+/* WELCOME */
+
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.small-title {
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  color: #777;
+
+  margin-bottom: 8px;
+}
+
+.welcome-section h1 {
+  font-size: 34px;
+
+  margin: 0 0 8px;
+}
+
+.welcome-section > p:last-child {
+  color: #666;
+
+  margin: 0;
+}
+
+
+/* ONLINE CARD */
+
+.online-card {
+  background: white;
+
+  border-radius: 14px;
+
+  padding: 28px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+
+  margin-bottom: 18px;
+}
+
+.card-label {
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  color: #777;
+
+  margin: 0 0 10px;
+}
+
+.online-card h2 {
+  margin: 0 0 8px;
+
+  font-size: 23px;
+}
+
+.status-description {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+
+/* STATUS CIRCLE */
+
+.status-circle {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+}
+
+.status-circle.online {
+  background: #e7f8ed;
+  color: #16a34a;
+}
+
+.status-circle.offline {
+  background: #f1f1f1;
+  color: #999;
+}
+
+
+/* AVAILABILITY BUTTON */
+
+.availability-button {
+  width: 100%;
+
+  border: none;
+
+  padding: 17px;
+
+  border-radius: 9px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  margin-bottom: 25px;
+}
+
+.online-button {
+  background: #000;
+
+  color: white;
+}
+
+.online-button:hover {
+  background: #333;
+}
+
+.offline-button {
+  background: #e5e5e5;
+
+  color: #111;
+}
+
+.offline-button:hover {
+  background: #d5d5d5;
+}
+
+.availability-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* VEHICLE CARD */
+
+.vehicle-card {
+  background: white;
+
+  padding: 28px;
+
+  border-radius: 14px;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+
+  margin-bottom: 18px;
+}
+
+.vehicle-details {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+.vehicle-icon {
+  width: 55px;
+  height: 55px;
+
+  background: #f1f1f1;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 27px;
+}
+
+.vehicle-details h3 {
+  margin: 0 0 5px;
+
+  font-size: 18px;
+}
+
+.vehicle-details p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+
+/* RIDES CARD */
+
+.rides-card {
+  background: white;
+
+  padding: 28px;
+
+  border-radius: 14px;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.rides-card h2 {
+  margin: 0 0 8px;
+
+  font-size: 20px;
+}
+
+.rides-card > p:last-child {
+  color: #777;
+
+  margin: 0;
+
+  font-size: 14px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .driver-register-card {
+    padding: 28px 22px;
+  }
+
+  .dashboard-header {
+    padding: 0 20px;
+  }
+
+  .dashboard-content {
+    padding: 35px 18px;
+  }
+
+  .welcome-section h1 {
+    font-size: 28px;
+  }
+
+  .online-card {
+    padding: 22px;
+  }
+
+  .status-circle {
+    width: 50px;
+    height: 50px;
+
+    font-size: 23px;
+  }
+}
+     /* =========================================
+        USER AUTH PAGES
+        ========================================= */
+
+   .user-login-page,
+   .user-register-page {
+     min-height: 100vh;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background: #f5f5f5;
+     padding: 30px 20px;
+     box-sizing: border-box;
+   }
+
+
+/* =========================================
+   LOGIN / REGISTER CARD
+   ========================================= */
+
+.user-login-card,
+.user-register-card {
+  width: 100%;
+  max-width: 430px;
+  background: #ffffff;
+  padding: 42px;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.10);
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   LOGO
+   ========================================= */
+
+.user-logo {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+
+/* =========================================
+   HEADINGS
+   ========================================= */
+
+.user-login-card h1,
+.user-register-card h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: -0.5px;
+}
+
+.user-subtitle {
+  margin: 9px 0 30px;
+  color: #6b6b6b;
+  font-size: 15px;
+}
+
+
+/* =========================================
+   INPUT GROUP
+   ========================================= */
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.input-group input {
+  width: 100%;
+  height: 50px;
+  padding: 0 15px;
+  border: 1px solid #d6d6d6;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111111;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease,
+  box-shadow 0.2s ease;
+}
+
+.input-group input::placeholder {
+  color: #999999;
+}
+
+.input-group input:focus {
+  border-color: #000000;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   USER LOGIN BUTTON
+   ========================================= */
+
+.user-login-button,
+.user-register-button {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 8px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease,
+  transform 0.1s ease;
+}
+
+.user-login-button:hover,
+.user-register-button:hover {
+  background: #222222;
+}
+
+.user-login-button:active,
+.user-register-button:active {
+  transform: scale(0.99);
+}
+
+
+/* =========================================
+   MESSAGES
+   ========================================= */
+
+.user-message {
+  margin: 18px 0 0;
+  padding: 12px;
+  border-radius: 7px;
+  background: #f1f1f1;
+  color: #333333;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+/* =========================================
+   REGISTER / LOGIN TEXT
+   ========================================= */
+
+.user-register-text,
+.user-login-text {
+  margin: 24px 0 0;
+  text-align: center;
+  color: #666666;
+  font-size: 14px;
+}
+
+.user-register-link,
+.user-login-link {
+  border: none;
+  background: none;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 5px;
+}
+
+.user-register-link:hover,
+.user-login-link:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   DRIVER LOGIN OPTION
+   ========================================= */
+
+.driver-option {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid #eeeeee;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  color: #666666;
+  font-size: 14px;
+}
+
+.driver-option button {
+  border: none;
+  background: none;
+  padding: 0;
+
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.driver-option button:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .user-login-page,
+  .user-register-page {
+    padding: 20px 15px;
+    align-items: flex-start;
+    padding-top: 50px;
+  }
+
+  .user-login-card,
+  .user-register-card {
+    padding: 30px 24px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .user-login-card h1,
+  .user-register-card h1 {
+    font-size: 26px;
+  }
+
+  .user-logo {
+    font-size: 27px;
+    margin-bottom: 25px;
+  }
+}
+
+
+/* =========================================
+   SMALL SCREENS
+   ========================================= */
+
+@media (max-width: 380px) {
+
+  .user-login-card,
+  .user-register-card {
+    padding: 25px 18px;
+  }
+
+  .user-login-card h1,
+  .user-register-card h1 {
+    font-size: 24px;
+  }
+}
+     /* =========================================
+        USER DASHBOARD
+        ========================================= */
+
+   .user-dashboard {
+     min-height: 100vh;
+     background: #f5f5f5;
+   }
+
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+
+.user-navbar {
+  height: 72px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 45px;
+  box-sizing: border-box;
+}
+
+.user-navbar-logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: -1px;
+}
+
+.user-navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.welcome-user {
+  font-size: 14px;
+  color: #444444;
+}
+
+.logout-button {
+  border: 1px solid #d0d0d0;
+  background: #ffffff;
+  color: #111111;
+
+  padding: 9px 18px;
+  border-radius: 20px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #f2f2f2;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+.user-dashboard-content {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 60px 30px;
+
+  display: grid;
+  grid-template-columns: 430px 1fr;
+  gap: 35px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   RIDE CARD
+   ========================================= */
+
+.ride-card {
+  background: #ffffff;
+  border-radius: 14px;
+
+  padding: 35px;
+
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.ride-card h1 {
+  margin: 0;
+
+  font-size: 30px;
+  line-height: 1.2;
+
+  color: #111111;
+  letter-spacing: -0.5px;
+}
+
+.ride-subtitle {
+  margin: 10px 0 30px;
+
+  color: #6b6b6b;
+  font-size: 14px;
+}
+
+
+/* =========================================
+   LOCATION INPUTS
+   ========================================= */
+
+.location-input {
+  display: flex;
+  align-items: flex-start;
+}
+
+.location-dot {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+
+  margin-top: 28px;
+  margin-right: 15px;
+
+  flex-shrink: 0;
+}
+
+.pickup-dot {
+  background: #000000;
+}
+
+.destination-dot {
+  background: #ffffff;
+  border: 3px solid #000000;
+  box-sizing: border-box;
+}
+
+.location-field {
+  flex: 1;
+}
+
+.location-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #555555;
+}
+
+.location-field input {
+  width: 100%;
+  height: 50px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d6d6d6;
+  border-radius: 7px;
+
+  box-sizing: border-box;
+
+  background: #f7f7f7;
+  color: #111111;
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+.location-field input:focus {
+  border-color: #000000;
+  background: #ffffff;
+}
+
+
+/* =========================================
+   LINE BETWEEN LOCATIONS
+   ========================================= */
+
+.location-line {
+  width: 2px;
+  height: 24px;
+
+  background: #cccccc;
+
+  margin-left: 5px;
+}
+
+
+/* =========================================
+   REQUEST BUTTON
+   ========================================= */
+
+.request-ride-button {
+  width: 100%;
+  height: 52px;
+
+  margin-top: 30px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #000000;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.request-ride-button:hover {
+  background: #222222;
+}
+
+
+/* =========================================
+   MAP AREA
+   ========================================= */
+
+.ride-info-card {
+  min-height: 500px;
+
+  border-radius: 14px;
+  overflow: hidden;
+
+  background: #e8e8e8;
+
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+          linear-gradient(
+                  45deg,
+                  #eeeeee 25%,
+                  #e5e5e5 25%,
+                  #e5e5e5 50%,
+                  #eeeeee 50%,
+                  #eeeeee 75%,
+                  #e5e5e5 75%
+          );
+
+  background-size: 40px 40px;
+}
+
+.map-message {
+  background: #ffffff;
+
+  padding: 25px 35px;
+
+  border-radius: 12px;
+
+  text-align: center;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.map-message span {
+  font-size: 28px;
+}
+
+.map-message p {
+  margin: 10px 0 4px;
+
+  font-weight: 600;
+  color: #222222;
+}
+
+.map-message small {
+  color: #777777;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 850px) {
+
+  .user-dashboard-content {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+  .ride-info-card {
+    min-height: 350px;
+  }
+
+  .map-placeholder {
+    min-height: 350px;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .user-navbar {
+    padding: 0 20px;
+  }
+
+  .user-navbar-logo {
+    font-size: 24px;
+  }
+
+  .welcome-user {
+    display: none;
+  }
+
+  .user-dashboard-content {
+    padding: 25px 15px;
+  }
+
+  .ride-card {
+    padding: 25px 20px;
+  }
+
+  .ride-card h1 {
+    font-size: 26px;
+  }
+}
+.map-container {
+  width: 100%;
+  height: 60vh;
+}
+
+.ride-map {
+  width: 100%;
+  height: 100%;
+}

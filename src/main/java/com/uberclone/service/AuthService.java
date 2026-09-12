@@ -31,7 +31,7 @@ public class AuthService {
                                 request.getPassword()
                         )
                 )
-                .role(request.getRole())
+                .role("RIDER")
                 .build();
 
         userRepository.save(user);

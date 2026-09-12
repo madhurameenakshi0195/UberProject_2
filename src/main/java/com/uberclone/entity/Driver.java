@@ -1,6 +1,8 @@
 package com.uberclone.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,12 +35,11 @@ public class Driver {
 
     @OneToOne(mappedBy = "driver",
             cascade = CascadeType.ALL)
+    @JsonManagedReference
     private DriverLocation driverLocation;
 
-
     @OneToMany(mappedBy = "driver")
-
-
+    @JsonIgnore
     private List<Ride> rides;
 
     private Double rating;
